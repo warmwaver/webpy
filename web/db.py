@@ -1211,7 +1211,7 @@ def _interpolate(format):
         return match, match.end()
 
     namechars = "abcdefghijklmnopqrstuvwxyz" \
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_"
     chunks = []
     pos = 0
 
