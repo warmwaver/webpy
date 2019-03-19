@@ -211,6 +211,9 @@ class StaticApp(SimpleHTTPRequestHandler):
         self.headers = []
         self.environ = environ
         self.start_response = start_response
+        # In Python 3.7, SimpleHTTPRequestHandler accepts the new directory argument,
+        # in addition to the new --directory command line argument.
+        self.directory = os.getcwd()
 
     def send_response(self, status, msg=""):
         # status' type is <enum 'HTTPStatus'> in python 3.6.*
