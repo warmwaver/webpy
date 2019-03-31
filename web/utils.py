@@ -648,9 +648,12 @@ class IterBetter:
         if hasattr(self, "_head"):
             yield self._head
 
-        while 1:    
-            yield next(self.i)
-            self.c += 1
+        while True:
+            try:
+                yield next(self.i)
+                self.c += 1
+            except StopIteration:
+                break
 
     def __getitem__(self, i):
         #todo: slices
@@ -695,7 +698,10 @@ def safeiter(it, cleanup=None, ignore_errors=True):
 
     it = iter(it)
     while True:
-        yield next()
+        try:
+            yield next()
+        except StopIteration:
+            break
 
 def safewrite(filename, content):
     """Writes the content to a temp file and then moves the temp file to 
